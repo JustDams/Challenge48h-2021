@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import UploadImage from './UploadImage.vue'
-
+import Error from './Error.vue'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -15,5 +14,5 @@ const routes = {
 }
 
 new Vue({
-  render: h => h(routes[window.location.pathname]),
+  render: h => h(routes[window.location.pathname])
 }).$mount('#app')

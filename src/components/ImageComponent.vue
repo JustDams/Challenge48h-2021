@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <article class="lesimgs">
-      <img src="/a/test.jpg" style="width: 20%" onclick="myFunction(this);" />
+      <img src="/assets/logo.jpg" style="width: 20%" onclick="myFunction(this);" />
     </article>
 
     <div class="container" id="popup">
@@ -10,7 +10,7 @@
       >
       <img id="expandedImg" style="width: 50%" />
       <p>Description</p>
-      <a href="/a/test.jpg" download>Télécharger l'image</a>
+      <a href="/assets/logo.jpg" download>Télécharger l'image</a>
     </div>
   </div>
 </template>
@@ -53,10 +53,10 @@
 export default {
   name: "ImageComponent",
 };
-function myFunction(imgs) {
-  var expandImg = document.getElementById("expandedImg");
+cont myFunction = (imgs) => {
+  let expandImg = document.getElementById("expandedImg");
   expandImg.src = imgs.src;
   expandImg.parentElement.style.display = "";
   document.getElementById("popup").classList.toggle("active");
-}
+};
 </script>

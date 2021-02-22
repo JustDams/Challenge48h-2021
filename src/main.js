@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import UploadImage from './UploadImage.vue'
 
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -11,7 +10,6 @@ Vue.config.productionTip = false
 
 const routes = {
   '/': App,
-  '/UploadImage': UploadImage,
 }
 
 new Vue({

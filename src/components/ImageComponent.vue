@@ -1,7 +1,11 @@
 <template>
   <div class="body">
     <article class="lesimgs">
-      <img src="/assets/logo.jpg" style="width: 20%" onclick="myFunction(this);" />
+      <img
+        src="/assets/logo.jpg"
+        style="width: 20%"
+        onclick="myFunction(this);"
+      />
     </article>
 
     <div class="container" id="popup">
@@ -14,6 +18,18 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: "ImageComponent",
+};
+const myFunction = (imgs) => {
+  const expandImg = document.getElementById("expandedImg");
+  expandImg.src = imgs.src;
+  expandImg.parentElement.style.display = "";
+  document.getElementById("popup").classList.toggle("active");
+};
+</script>
 
 <style>
 .body {
@@ -49,14 +65,3 @@
 }
 </style>
 
-<script>
-export default {
-  name: "ImageComponent",
-};
-cont myFunction = (imgs) => {
-  let expandImg = document.getElementById("expandedImg");
-  expandImg.src = imgs.src;
-  expandImg.parentElement.style.display = "";
-  document.getElementById("popup").classList.toggle("active");
-};
-</script>

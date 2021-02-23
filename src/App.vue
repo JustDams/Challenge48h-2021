@@ -7,6 +7,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import Connexion from './components/Connexion.vue'
 
 export default {
   name: 'App',

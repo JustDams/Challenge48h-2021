@@ -77,10 +77,28 @@
         background: #394D61;
         }
         </style>
-    <script type="text/javascript">
+<script type="text/javascript">
         //auto expand textarea
         function adjust_textarea(h) {
             h.style.height = "20px";
             h.style.height = (h.scrollHeight)+"px";
         }
-    </script>
+import axios from 'axios';
+
+// Request API.
+axios
+  .post('/', {
+    identifier: mail,
+    password: mdp,
+  })
+  .then(response => {
+    // Handle success.
+    console.log('Well done!');
+    console.log('User profile', response.data.user);
+    console.log('User token', response.data.jwt);
+  })
+  .catch(error => {
+    // Handle error.
+    console.log('An error occurred:', error.response);
+  });
+</script>

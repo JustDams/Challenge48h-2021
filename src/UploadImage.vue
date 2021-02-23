@@ -4,7 +4,7 @@
     <div
       class="container d-flex justify-content-center h-100vh align-items-center"
     >
-      <form @submit.prevent="sendToStrapi" ref="uploadForm" action="/Index">
+      <form @submit.prevent="sendToStrapi" ref="uploadForm">
         <div class="form-group">
           <label for="nom">Nom de l'image</label>
           <input type="text" name="nom" class="form-control" />

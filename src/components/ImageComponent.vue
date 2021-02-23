@@ -42,10 +42,16 @@ export default {
   },
   mounted() {
     //  display the picture and it description
-    axios.get(`${apiUrl}/images/${this.imageId}`).then((res) => {
-      this.image = res.data;
-      this.imageSrc = apiUrl + res.data.image[0].url;
-    });
+    axios
+      .get(`${apiUrl}/images/${this.imageId}`, {
+        headers: {
+          Authorization: `Bearer ${this.getCookie("jwt")}`,
+        },
+      })
+      .then((res) => {
+        this.image = res.data;
+        this.imageSrc = apiUrl + res.data.image[0].url;
+      });
   },
   methods: {
     toggleActive: (id) => {
@@ -53,6 +59,11 @@ export default {
       document
         .getElementById(`popupbackground${id}`)
         .classList.toggle("active");
+    },
+    getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(";").shift();
     },
   },
 };

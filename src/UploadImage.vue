@@ -55,6 +55,11 @@ export default {
       const formData = new FormData();
       const formElem = form.elements;
       const data = {};
+      const config = {
+        headers: {
+          Authorization: `Bearer ${this.getCookie("jwt")}`,
+        },
+      };
 
       formElem.forEach((e) => {
         if (!["submit", "file"].includes(e.type)) data[e.name] = e.value;
@@ -64,7 +69,7 @@ export default {
         }
       });
       formData.append("data", JSON.stringify(data));
-      axios.post(`${apiUrl}/images`, formData).then((r) => {
+      axios.post(`${apiUrl}/images`, formData, config).then((r) => {
         const formElem = document.querySelectorAll(".tag_name");
         formElem.forEach((e) => {
           const formData = new FormData();
@@ -72,12 +77,17 @@ export default {
           data["id_image"] = r.data.id;
           data["tag"] = e.id;
           formData.append("data", JSON.stringify(data));
-          console.log(data);
-          axios.post(`${apiUrl}/images-tags`, formData).then((r) => {
+          axios.post(`${apiUrl}/images-tags`, formData, config).then((r) => {
             console.log(r);
+            document.location.href = "/"
           });
         });
       });
+    },
+    getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(";").shift();
     },
   },
 };

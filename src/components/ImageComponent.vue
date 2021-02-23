@@ -38,6 +38,7 @@ export default {
     return {
       image: null,
       imageSrc: null,
+      tagList: []
     };
   },
   mounted() {
@@ -51,7 +52,7 @@ export default {
       .then((res) => {
         this.image = res.data;
         this.imageSrc = apiUrl + res.data.image[0].url;
-      });
+      })
   },
   methods: {
     toggleActive: (id) => {

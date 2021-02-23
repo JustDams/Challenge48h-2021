@@ -17,7 +17,10 @@
             >Previous</a
           >
         </li>
-        <li class="page-item">
+        <li
+          class="page-item"
+          v-if="checkPage(page === 1 ? page : page - 1) > 0"
+        >
           <a
             class="page-link"
             href="#"
@@ -25,7 +28,10 @@
             >{{ page === 1 ? page : page - 1 }}</a
           >
         </li>
-        <li class="page-item">
+        <li
+          class="page-item"
+          v-if="checkPage(page === 1 ? page + 1 : page) > 0"
+        >
           <a
             class="page-link"
             href="#"
@@ -67,7 +73,7 @@ export default {
   },
   data() {
     return {
-      images: null,
+      images: [],
       page: 1,
       itemsPerPage: 39,
       imageFomated: null,
@@ -93,7 +99,8 @@ export default {
       return array;
     },
     checkPage(page) {
-      return this.formatPage(page).length;
+      while (this.formatPage(page) !== null)
+        return this.formatPage(page).length;
     },
   },
 };

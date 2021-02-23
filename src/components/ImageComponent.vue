@@ -1,22 +1,14 @@
 <template>
   <div class="m-2" style="width: 20%">
     <!-- images -->
-    <!--img
-      class="card-img-top"
-      style="cursor: pointer"
-      :src="imageSrc"
-      :id="imageId"
-      v-on:click="toggleActive(imageId)"
-    /-->
-
     <div
       class="block-image"
       :style="'background-image: url(' + imageSrc + ')'"
       v-on:click="toggleActive(imageId)"
     ></div>
     <!-- Selected picture + close button   -->
-    <div class="picture-background" :id="'popupbackground' + imageId"></div>
-    <div class="picture-container" :id="'popup' + imageId">
+    <div :id="'popupbackground' + imageId" class="picture-background"></div>
+    <div :id="'popup' + imageId" class="picture-container" style="z-index: 1">
       <span
         class="closebtn rounded-circle d-flex justify-content-center align-items-end"
         v-on:click="toggleActive(imageId)"
@@ -26,7 +18,9 @@
       <img :src="imageSrc" style="max-width: 50%" />
 
       <!-- description of the picture -->
-      <p>Description</p>
+      <p class="picture-description">
+        {{ image !== null ? image.nom : "" }}
+      </p>
     </div>
   </div>
 </template>
@@ -83,6 +77,13 @@ export default {
   height: 100vh;
   top: 0;
   left: 0;
+}
+
+.picture-description {
+  background-color: white;
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* button "x" */

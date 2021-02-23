@@ -62,12 +62,12 @@ export default {
       });
       formData.append("data", JSON.stringify(data));
       axios.post(`${apiUrl}/images`, formData).then((r) => {
-        const formData = new FormData();
         const formElem = document.querySelectorAll(".tag_name");
-        const data = {};
         formElem.forEach((e) => {
+          const formData = new FormData();
+          const data = {};
           data["id_image"] = r.data.id;
-          data["tag"] = e.textContent.trim();
+          data["tag"] = e.id;
           formData.append("data", JSON.stringify(data));
           console.log(data);
           axios.post(`${apiUrl}/images-tags`, formData).then((r) => {

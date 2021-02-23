@@ -14,7 +14,13 @@
     />
     <ul
       class="list-group position-absolute"
-      style="overflow: scroll; height: 100px; right: 0; cursor: pointer"
+      style="
+        overflow: scroll;
+        height: 100px;
+        right: 0;
+        cursor: pointer;
+        overflow-x: hidden;
+      "
     >
       <li
         v-for="t in tagsRegister"

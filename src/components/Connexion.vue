@@ -1,10 +1,10 @@
 <template>
     <main>
-        <form action="">
+        <form action="/" method="post">
             <label for="email">Votre mail</label>
-            <input type="email" name="email" id="email">
+            <input type="email" name="email" id="email" v-model="email">
             <label for="mdp">Mot de passe</label>
-            <input type="password" name="mdp" id="mdp">
+            <input type="password" name="mdp" id="mdp" v-model="mdp">
             <input type="submit" value="Se connecter">
         </form>
     </main>

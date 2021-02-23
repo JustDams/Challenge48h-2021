@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 import App from './App.vue'
-import Error from './Error.vue'
+import ErrorPage from './Error.vue'
 import Connexion from './Connexion'
 import UploadImage from './UploadImage'
 
@@ -19,5 +19,5 @@ const routes = {
 }
 
 new Vue({
-  render: h => h(routes[window.location.pathname]) || h(Error)
+  render: h => h(routes[window.location.pathname] || ErrorPage)
 }).$mount('#app')

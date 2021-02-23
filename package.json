@@ -1,6 +1,10 @@
 {
   "name": "challenge48h-2021",
   "version": "0.1.0",
+  "engines": {
+    "node": ">=6.9.0",
+    "npm": ">=6.0.0"
+  },
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

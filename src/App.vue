@@ -2,6 +2,17 @@
   <div id="app" style="margin: 0">
     <Header class="position-fixed w-100" />
     <div class="container-fluid" style="padding-top: 70px">
+      <div class="check form-check-inline">
+        <div v-for="t in tags" :key="t.id">
+          <input
+            class="checkb"
+            type="checkbox"
+            :value="t.id"
+            v-model="checkedTags"
+          />
+          <label for="tags">{{ t.nom_tag }}</label>
+        </div>
+      </div>
       <div class="d-flex flex-wrap justify-content-center">
         <ImageComponent
           :imageId="i.id"
@@ -77,12 +88,15 @@ export default {
       page: 1,
       itemsPerPage: 39,
       imageFomated: null,
+      checkedTags: [],
+      tags: [],
     };
   },
   mounted() {
     axios.get(`${apiUrl}/images`).then((res) => {
       this.images = res.data;
       this.changePage(1);
+      this.getTags();
     });
   },
   methods: {
@@ -102,6 +116,11 @@ export default {
       while (this.formatPage(page) !== null)
         return this.formatPage(page).length;
     },
+    getTags() {
+      axios.get(`${apiUrl}/tags`).then((res) => {
+        this.tags = res.data;
+      });
+    },
   },
 };
 </script>
@@ -115,4 +134,16 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+.check {
+  z-index: 0;
+}
+
+.checkb {
+  margin-left: 50px;
+  margin-right: 5px;
+}
+
+
+
+
 </style>

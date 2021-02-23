@@ -22,6 +22,8 @@
         <input type="file" name="image" />
       </div>
 
+      <TagComponent class="form-group" />
+
       <input type="submit" name="Submit" />
     </form>
   </div>
@@ -30,9 +32,13 @@
 <script>
 import axios from "axios";
 import { apiUrl } from "../config.json";
+import TagComponent from "./components/TagComponent.vue";
 
 export default {
   name: "UploadImage",
+  components: {
+    TagComponent,
+  },
   methods: {
     sendToStrapi() {
       const form = this.$refs["uploadForm"];
@@ -48,7 +54,20 @@ export default {
         }
       });
       formData.append("data", JSON.stringify(data));
-      axios.post(`${apiUrl}/images`, formData).then((r) => console.log(r));
+      axios.post(`${apiUrl}/images`, formData).then((r) => {
+        const formData = new FormData();
+        const formElem = document.querySelectorAll(".tag_name");
+        const data = {};
+        formElem.forEach((e) => {
+          data["id_image"] = r.data.id;
+          data["tag"] = e.textContent.trim();
+          formData.append("data", JSON.stringify(data));
+          console.log(data)
+          axios.post(`${apiUrl}/images-tags`, formData).then((r) => {
+            console.log(r);
+          });
+        });
+      });
     },
   },
 };

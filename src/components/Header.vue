@@ -1,9 +1,10 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">PassionFroid</b-navbar-brand>
+      <b-navbar-brand href="/">PassionFroid</b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-navbar-nav class="ml-auto">
+        <b-nav-item href="/UploadImage">Upload image</b-nav-item>
         <b-nav-form>
           <b-form-input
             size="sm"

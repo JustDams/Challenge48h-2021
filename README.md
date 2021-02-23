@@ -29,6 +29,7 @@ email de connexion: ddw_admin@de-weerd.name<br>
 mdp sur strapi: #Zlt!Dc~!8|2jV17=-$Mm~v8y.^c
 
 ### Site
+http://equipe38-web.herokuapp.com/<br>
 connexion sur l'app:<br>
 username : admin<br>
 mdp: #Zlt!Dc~!8|2jV17=-$Mm~v8y.^c

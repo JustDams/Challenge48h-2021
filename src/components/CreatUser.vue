@@ -1,23 +1,22 @@
 <template>
     <main>
-        <form action="">
+        <form action="/" method="post">
             <h2>Création d'utilisateur</h2>
             <label for="email">Votre mail</label>
-            <input type="email" name="email" id="email">
+            <input type="email" name="email" id="email" v-model="email">
             <label for="name">Votre nom</label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" v-model="name">
             <label for="mdp">Mot de passe</label>
-            <input type="password" name="mdp" id="mdp">
+            <input type="password" name="mdp" id="mdp" v-model="mdp">
             <label for="mdp">Confirmer le mot de passe</label>
-            <input type="password" name="mdp2" id="mdp2">
+            <input type="password" name="mdp2" id="mdp2" v-model="mdp2">
             <div>
-            <input type="radio" id="user" name="drone" value="user"
-                    checked>
+            <input type="radio" id="user" name="drone" value="user" checked v-model="user">
             <label for="user">User</label>
             </div>
             
             <div>
-            <input type="radio" id="Admin" name="drone" value="Admin">
+            <input type="radio" id="Admin" name="drone" value="Admin" v-model="admin">
             <label for="Admin">Admin</label>
             </div>
             <input type="submit" value="Se connecter">

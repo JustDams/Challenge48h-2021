@@ -10,7 +10,7 @@
     <p class="text-center">
       La page que vous avez demandée n'existe pas.
       <br />
-      <a href="">Retour</a>
+      <a href="/">Acceuil</a>
     </p>
   </div>
 </div>

@@ -1,6 +1,6 @@
 <template>
   <main>
-    <form action="/" ref="auth" @submit.prevent="sendToStrapi">
+    <form class="form" action="/" ref="auth" @submit.prevent="sendToStrapi">
       <label for="identifier">Username</label>
       <input type="text" name="identifier" />
       <label for="password">Mot de passe</label>
@@ -33,6 +33,7 @@ export default {
         .post(`${apiUrl}/auth/local`, data)
         .then((res) => {
           document.cookie = `jwt=${res.data.jwt}`;
+          document.location.href = "/";
         })
         .catch((error) => {
           // Handle error.
@@ -40,15 +41,14 @@ export default {
         });
     },
     redirectToIndex() {
-      if(document.cookie.includes("jwt"))
-        document.location.href = '/'
+      if (document.cookie.includes("jwt")) document.location.href = "/";
     },
   },
 };
 </script>
 
 <style type="text/css">
-form {
+.form {
   width: 25vw;
   min-width: 300px;
   font-size: 1vh;
@@ -59,18 +59,18 @@ form {
   top: 45vh;
   left: 35vw;
 }
-form input[type="submit"],
-form input[type="text"],
-form label {
+.form input[type="submit"],
+.form input[type="text"],
+.form label {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 16px;
   color: #fff;
 }
-form label {
+.form label {
   display: block;
   margin-bottom: 10px;
 }
-form input[type="text"] {
+.form input[type="text"] {
   background: transparent;
   border: none;
   border-bottom: 1px dashed #83a4c5;
@@ -79,8 +79,8 @@ form input[type="text"] {
   padding: 0px 0px 0px 0px;
   font-style: italic;
 }
-form textarea,
-form input[type="password"] {
+.form textarea,
+.form input[type="password"] {
   font-style: italic;
   padding: 0px 0px 0px 0px;
   background: transparent;
@@ -93,21 +93,21 @@ form input[type="password"] {
   height: 20px;
 }
 
-form textarea:focus,
-form input[type="password"]:focus,
-form input[type="text"]:focus,
-form input[type="text"] :focus {
+.form textarea:focus,
+.form input[type="password"]:focus,
+.form input[type="text"]:focus,
+.form input[type="text"] :focus {
   border-bottom: 1px dashed #d9ffa9;
 }
 
-form input[type="submit"] {
+.form input[type="submit"] {
   background: #576e86;
   border: none;
   padding: 8px 10px 8px 10px;
   border-radius: 5px;
   color: #a8bace;
 }
-form input[type="submit"]:hover {
+.form input[type="submit"]:hover {
   background: #394d61;
 }
 </style>

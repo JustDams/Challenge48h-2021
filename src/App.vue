@@ -80,10 +80,12 @@ export default {
     };
   },
   mounted() {
-    axios.get(`${apiUrl}/images`).then((res) => {
-      this.images = res.data;
-      this.changePage(1);
-    });
+    if (document.cookie.includes("jwt"))
+      axios.get(`${apiUrl}/images`).then((res) => {
+        this.images = res.data;
+        this.changePage(1);
+      });
+    else document.location.href = "/Connexion";
   },
   methods: {
     changePage(page) {

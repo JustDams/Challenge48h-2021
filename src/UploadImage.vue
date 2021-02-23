@@ -46,6 +46,9 @@ export default {
     TagComponent,
     Header,
   },
+  mounted() {
+    if (!document.cookie.includes("jwt")) document.location.href = "/Connexion";
+  },
   methods: {
     sendToStrapi() {
       const form = this.$refs["uploadForm"];
